@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botero Ai</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="{{'dark' if dark_mode else ''}}">
+    <div class="container">
+        <div class="chat-header">Botero survival guide </div>
+        <div class="chat-messages" id="chat-messages">
+            {% for m in messages %}
+            <div class="message {{ 'user' if m.startswith('You:') else 'bot' }}">{{ m }}</div>
+            {% endfor %}
+        </div>
+        <form class="chat-form" id="chat-form" method="post" action="/">
+            <input type="text" class="chat-input" id="chat-input" name="message" placeholder="Type your message..." autocomplete="off" autofocus>
+            <button type="submit" class="send-button">Send</button>
+        </form>
+    </div>
+</body>
+</html>
